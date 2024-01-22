@@ -1,0 +1,138 @@
+<!-- <div class="container">
+  <form (ngSubmit)="onSubmit()">
+    <ion-input
+      label="Nome"
+      name="Nome"
+      label-placement="floating"
+      fill="outline"
+      placeholder="Nome Completo"
+      [(ngModel)]="nome"
+    ></ion-input>
+    <ion-input
+      label="Empresa"
+      name="Empresa"
+      label-placement="floating"
+      fill="outline"
+      placeholder="Insira o nome da Empresa"
+      [(ngModel)]="empresa"
+    ></ion-input>
+    <ion-input
+      label="Telefone"
+      name="Telefone"
+      label-placement="floating"
+      fill="outline"
+      placeholder="00 00000 0000"
+      [(ngModel)]="telefone"
+    ></ion-input>
+    <ion-input
+      label="CNPJ"
+      name="CNPJ"
+      label-placement="floating"
+      fill="outline"
+      placeholder="XX.XXX.XXX/0001-XX"
+      [(ngModel)]="cnpj"
+    ></ion-input>
+    <ion-input
+      label="CPF"
+      name="CPF"
+      label-placement="floating"
+      fill="outline"
+      placeholder="000.000.000-XX"
+      [(ngModel)]="cpf"
+    ></ion-input>
+    <ion-input
+      label="E-mail"
+      name="E-mail"
+      label-placement="floating"
+      fill="outline"
+      placeholder="abcd@example.com"
+      errorText="Invalid email"
+      [(ngModel)]="email"
+    ></ion-input>
+    <ion-button expand="full" type="submit">Enviar</ion-button>
+  </form>
+</div> -->
+
+<div class="container">
+  <div class="topo">
+    <ion-button fill="outline" slot="start" [routerLink]="['/']">
+      <ion-icon name="chevron-back-outline" style="color: #7290c5"></ion-icon>
+    </ion-button>
+    <h2>Cadastro de Clientes</h2>
+  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ion-input
+      formControlName="nome"
+      label="Nome"
+      name="Nome"
+      label-placement="floating"
+      fill="outline"
+      placeholder="Nome Completo"
+    ></ion-input>
+    <ion-input
+      formControlName="empresa"
+      label="Empresa"
+      name="Empresa"
+      label-placement="floating"
+      fill="outline"
+      placeholder="Insira o nome da Empresa"
+    ></ion-input>
+    <ion-input
+      formControlName="telefone"
+      label="Telefone"
+      name="Telefone"
+      label-placement="floating"
+      fill="outline"
+      placeholder="00 99999 5555"
+      [maskito]="phoneMask"
+      [maskitoElement]="maskPredicate"
+    ></ion-input>
+    <ion-input
+      formControlName="cnpj"
+      label="CNPJ"
+      name="CNPJ"
+      label-placement="floating"
+      fill="outline"
+      placeholder="XX.XXX.XXX/0001-XX"
+      [maskito]="cnpjj"
+      [maskitoElement]="maskPredicate"
+    ></ion-input>
+    <ion-input
+      formControlName="cpf"
+      label="CPF"
+      name="CPF"
+      label-placement="floating"
+      fill="outline"
+      placeholder="000.000.000-XX"
+      [maskito]="cpff"
+      [maskitoElement]="maskPredicate"
+    ></ion-input>
+    <ion-input
+      formControlName="email"
+      label="E-mail"
+      name="E-mail"
+      label-placement="floating"
+      fill="outline"
+      type="email"
+      placeholder="abcd@example.com"
+      errorText="Invalid email"
+      (input)="checkEmailValidity()"
+    ></ion-input>
+    <ion-text
+      *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched"
+    >
+      <p class="error-text">Endereço de e-mail inválido</p>
+    </ion-text>
+    <ion-button
+      expand="full"
+      shape="round"
+      type="submit"
+      [disabled]="!isEmailValid"
+      >Enviar</ion-button
+    >
+  </form>
+
+  <ion-text *ngIf="errorMessage" class="error-message">
+    <p class="error-text">{{ errorMessage }}</p>
+  </ion-text>
+</div>
