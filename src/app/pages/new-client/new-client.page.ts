@@ -29,7 +29,6 @@ export class NewClientPage implements OnInit {
       cpf: [''],
       email: ['', [Validators.required, Validators.email]],
     });
-    
   }
   
   readonly phoneMask: MaskitoOptions = {

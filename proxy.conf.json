@@ -2,7 +2,7 @@
     "/macros": {
       "target": "https://script.google.com",
       "secure": false,
-      "changeOrigin": true,
+      "changeOrigin": false,
       "logLevel": "debug"
     }
   }
